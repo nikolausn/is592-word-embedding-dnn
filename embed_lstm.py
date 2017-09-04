@@ -16,7 +16,7 @@ with open('traintest-smote.pickle','rb') as f:
 test_res = to_categorical(test_res,nb_classes=len(np.unique(test_res)))
 
 # Building the graph network
-batch_size=100
+batch_size=1000
 net = tflearn.input_data([None, 50])
 # reduce dimensionality using word embedding transform the name structure into 1000 dimensions
 net = tflearn.embedding(net,input_dim=62696,output_dim = 1000)
@@ -28,4 +28,4 @@ net = tflearn.regression(net,optimizer='adam',learning_rate=0.001,loss='categori
 # Training
 model = tflearn.DNN(net,tensorboard_verbose=0,best_checkpoint_path='./best_check/best_',checkpoint_path='./check/check_')
 
-model.fit(trainX,trainY,validation_set=(testX,testY),show_metric=True,batch_size=batch_size,snapshot_epoch=True)
+model.fit(train_res,test_res,validation_set=(testX,testY),show_metric=True,batch_size=batch_size,snapshot_epoch=True)
