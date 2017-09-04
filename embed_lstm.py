@@ -41,3 +41,4 @@ model.load('./check2/check_-792')
 model.fit(trainX,trainY,n_epoch=30,validation_set=(testX,testY),show_metric=True,batch_size=batch_size,snapshot_epoch=True)
 
 #model.save('./ethnicity.tflearn')
+#model.fit(train_res,test_res,validation_set=(testX,testY),show_metric=True,batch_size=batch_size,snapshot_epoch=True)
